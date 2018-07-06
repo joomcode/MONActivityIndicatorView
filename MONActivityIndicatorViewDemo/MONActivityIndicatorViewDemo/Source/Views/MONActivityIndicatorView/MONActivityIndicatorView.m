@@ -139,8 +139,8 @@
 }
 
 - (void)removeCircles {
-    [self.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [obj removeFromSuperview];
+    [self.subviews enumerateObjectsUsingBlock:^(UIView *circle, NSUInteger index, BOOL *stop) {
+        [circle removeFromSuperview];
     }];
 }
 
