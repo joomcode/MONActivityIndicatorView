@@ -88,6 +88,19 @@
 }
 
 #pragma mark -
+#pragma mark - View Lifecycle
+
+- (void)didMoveToWindow {
+    [super didMoveToWindow];
+    
+    // Core Animation animations are removed when the view is remove from a window.
+    // So, we have to add the animations again when the view is added to a window.
+    if (self.window && self.isAnimating) {
+        [self addCircleAnimations];
+    }
+}
+
+#pragma mark -
 #pragma mark - Private Methods
 
 - (void)setupDefaults {
@@ -133,14 +146,23 @@
                                                 color:color ?: self.defaultColor
                                             positionX:(i * ((2 * self.radius) + self.internalSpacing))];
         circle.transform = CGAffineTransformMakeScale(0, 0);
-        [circle.layer addAnimation:[self createAnimationWithDuration:self.duration delay:(i * self.delay)] forKey:@"scale"];
         [self addSubview:circle];
+    }
+    
+    if (self.window) {
+        [self addCircleAnimations];
     }
 }
 
 - (void)removeCircles {
     [self.subviews enumerateObjectsUsingBlock:^(UIView *circle, NSUInteger index, BOOL *stop) {
         [circle removeFromSuperview];
+    }];
+}
+
+- (void)addCircleAnimations {
+    [self.subviews enumerateObjectsUsingBlock:^(UIView *circle, NSUInteger index, BOOL *stop) {
+        [circle.layer addAnimation:[self createAnimationWithDuration:self.duration delay:(index * self.delay)] forKey:@"scale"];
     }];
 }
 
