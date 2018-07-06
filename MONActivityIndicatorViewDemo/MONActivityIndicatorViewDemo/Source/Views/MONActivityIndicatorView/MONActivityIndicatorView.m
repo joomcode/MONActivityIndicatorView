@@ -12,8 +12,8 @@
 /** The default color of each circle. */
 @property (strong, nonatomic) UIColor *defaultColor;
 
-/** An indicator whether the activity indicator view is animating. */
-@property (readwrite, nonatomic) BOOL isAnimating;
+/** Indicates whether the activity indicator view is animating. */
+@property (readwrite, nonatomic, getter=isAnimating) BOOL animating;
 
 /**
  Sets up default values
@@ -100,7 +100,7 @@
     
     // Core Animation animations are removed when the view is remove from a window.
     // So, we have to add the animations again when the view is added to a window.
-    if (self.window && self.isAnimating) {
+    if (self.window && self.animating) {
         [self addCircleAnimations];
     }
 }
@@ -175,18 +175,18 @@
 #pragma mark - Public Methods
 
 - (void)startAnimating {
-    if (!self.isAnimating) {
+    if (!self.animating) {
         [self addCircles];
         self.hidden = NO;
-        self.isAnimating = YES;
+        self.animating = YES;
     }
 }
 
 - (void)stopAnimating {
-    if (self.isAnimating) {
+    if (self.animating) {
         [self removeCircles];
         self.hidden = YES;
-        self.isAnimating = NO;
+        self.animating = NO;
     }
 }
 

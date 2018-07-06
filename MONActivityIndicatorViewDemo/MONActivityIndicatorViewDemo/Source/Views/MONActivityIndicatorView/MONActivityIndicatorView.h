@@ -37,6 +37,8 @@ FOUNDATION_EXPORT const unsigned char MONActivityIndicatorViewVersionString[];
 /** The assigned delegate */
 @property (weak, nonatomic) id<MONActivityIndicatorViewDelegate> delegate;
 
+/** Indicates whether the activity indicator view is animating. */
+@property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 
 /**
  Starts the animation of the activity indicator.
