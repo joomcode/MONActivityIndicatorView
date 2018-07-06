@@ -130,7 +130,7 @@
             color = [self.delegate activityIndicatorView:self circleBackgroundColorAtIndex:i];
         }
         UIView *circle = [self createCircleWithRadius:self.radius
-                                                color:(color == nil) ? self.defaultColor : color
+                                                color:color ?: self.defaultColor
                                             positionX:(i * ((2 * self.radius) + self.internalSpacing))];
         [circle setTransform:CGAffineTransformMakeScale(0, 0)];
         [circle.layer addAnimation:[self createAnimationWithDuration:self.duration delay:(i * self.delay)] forKey:@"scale"];
