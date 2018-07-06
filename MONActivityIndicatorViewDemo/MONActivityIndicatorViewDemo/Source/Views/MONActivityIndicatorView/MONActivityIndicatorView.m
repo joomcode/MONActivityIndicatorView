@@ -7,6 +7,31 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MONActivityIndicatorView.h"
 
+@interface MONActivityIndicatorLayer : CALayer
+
+@property (nonatomic, weak, readonly) MONActivityIndicatorView *view;
+
+@end
+
+@implementation MONActivityIndicatorLayer
+
+- (MONActivityIndicatorView *)view {
+    return (MONActivityIndicatorView *)self.delegate;
+}
+
+- (void)removeAllAnimations {
+    [super removeAllAnimations];
+    
+    // `-[UITableViewCell prepareForReuse]` and `-[UICollectionViewCell prepareForReuse]` remove all animations from
+    // child views. There is no way to restart animations automatically (as we do it in `-didMoveToWindow`).
+    // So, we have to stop animating.
+    // Note: We can't do it in `-animationDidStop:finished:` animation delegate, because the delegate method is called
+    // asynchronously.
+    [self.view stopAnimating];
+}
+
+@end
+
 @interface MONActivityIndicatorView ()
 
 /** The default color of each circle. */
@@ -84,16 +109,17 @@
 }
 
 #pragma mark -
-#pragma mark - Intrinsic Content Size
+#pragma mark - UIViews
+
++ (Class)layerClass {
+    return [MONActivityIndicatorLayer class];
+}
 
 - (CGSize)intrinsicContentSize {
     CGFloat width = (self.numberOfCircles * ((2 * self.radius) + self.internalSpacing)) - self.internalSpacing;
     CGFloat height = self.radius * 2;
     return CGSizeMake(width, height);
 }
-
-#pragma mark -
-#pragma mark - View Lifecycle
 
 - (void)didMoveToWindow {
     [super didMoveToWindow];
