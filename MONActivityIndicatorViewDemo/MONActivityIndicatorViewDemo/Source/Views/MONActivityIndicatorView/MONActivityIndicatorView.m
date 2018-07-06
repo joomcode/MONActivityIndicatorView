@@ -31,7 +31,7 @@
 - (void)removeCircles;
 
 /**
- Add animations to the circle layers.
+ Adds animations to the circle layers.
  */
 - (void)addCircleAnimations;
 
