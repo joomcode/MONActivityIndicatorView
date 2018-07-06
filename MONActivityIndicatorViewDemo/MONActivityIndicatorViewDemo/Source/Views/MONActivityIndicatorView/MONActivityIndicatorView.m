@@ -31,6 +31,11 @@
 - (void)removeCircles;
 
 /**
+ Add animations to the circle layers.
+ */
+- (void)addCircleAnimations;
+
+/**
  Creates the circle view.
  @param radius The radius of the circle.
  @param color The background color of the circle.
