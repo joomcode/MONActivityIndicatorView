@@ -121,6 +121,10 @@
     return CGSizeMake(width, height);
 }
 
+- (CGSize)sizeThatFits:(CGSize)size {
+    return self.intrinsicContentSize;
+}
+
 - (void)didMoveToWindow {
     [super didMoveToWindow];
     
