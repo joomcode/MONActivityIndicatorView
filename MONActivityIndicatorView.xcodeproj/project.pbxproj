@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0FDFE2181DBA556000B9DAFE /* MONActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDFE20E1DBA556000B9DAFE /* MONActivityIndicatorView.framework */; };
 		0FDFE21D1DBA556000B9DAFE /* MONActivityIndicatorViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDFE21C1DBA556000B9DAFE /* MONActivityIndicatorViewTests.m */; };
-		0FDFE22A1DBA55FC00B9DAFE /* MONActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FDFE2281DBA55FC00B9DAFE /* MONActivityIndicatorView.h */; };
+		0FDFE22A1DBA55FC00B9DAFE /* MONActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FDFE2281DBA55FC00B9DAFE /* MONActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FDFE22B1DBA55FC00B9DAFE /* MONActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDFE2291DBA55FC00B9DAFE /* MONActivityIndicatorView.m */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +163,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 0FDFE2041DBA555F00B9DAFE;
